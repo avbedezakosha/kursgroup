@@ -1,0 +1,13 @@
+{
+    "background_color": "#1a1b26",
+    "primary_color": "#24283b",
+    "secondary_color": "#414868",
+    "text_primary": "#a9b1d6",
+    "button_pressed": "#565f89",
+    "button_unpressed": "#414868",
+    "button_hover": "#565f89",
+    "border_color": "#3b4261",
+    "card_background": "#24283b",
+    "error_color": "#f7768e",
+    "success_color": "#73daca"
+}

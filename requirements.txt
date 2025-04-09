@@ -1,0 +1,4 @@
+PyQt5==5.15.9
+psycopg[binary]>=3.1.8
+python-dotenv==1.0.0
+--upgrade PyQt5 sip
