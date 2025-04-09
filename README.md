@@ -3,7 +3,7 @@
 [![Python 3.9+](https://img.shields.io/badge/python-3.9%2B-blue.svg)](https://www.python.org/downloads/)
 [![PyQt5](https://img.shields.io/badge/PyQt-5.15.9-green.svg)](https://pypi.org/project/PyQt5/)
 
-## Приложение для анализа и управления статистикой матчей CS:GO с графическим интерфейсом.
+## Приложение для анализа и управления статистикой матчей CS2 с графическим интерфейсом.
 
 ---
 
