@@ -1,6 +1,6 @@
 import sys
-from PyQt5.QtWidgets import QApplication, QDialog, QVBoxLayout, QPushButton
-from app.gui.main_window import MainWindow, AdminWindow
+from PyQt5.QtWidgets import QApplication, QDialog, QVBoxLayout, QPushButton, QMainWindow
+from app.gui.main_window import MainWindowUI
 
 
 class RoleDialog(QDialog):
@@ -34,9 +34,11 @@ def main():
     role_dialog = RoleDialog()
     if role_dialog.exec_() == QDialog.Accepted:
         if role_dialog.role == "admin":
-            window = AdminWindow()
+            window = QMainWindow()
         else:
-            window = MainWindow()
+            window = QMainWindow()
+            ui = MainWindowUI()
+            ui.setup_ui(window)
 
     window.show()
     sys.exit(app.exec_())

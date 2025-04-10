@@ -28,16 +28,6 @@ pip install -r requirements.txt
 pip3 install -r requirements.txt
 ```
 ---
-## Конвертирование *.ui в *.py
-#### Windows
-```cmd
-python scripts/converter_ui.py
-```
-#### Linux/macOS
-```bash
-python3 scripts/converter_ui.py
-```
----
 ## Запуск приложения
 #### Windows
 ```cmd
