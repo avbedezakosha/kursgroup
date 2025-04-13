@@ -1,48 +1,53 @@
+QWidget {
+    background-color: rgb(0, 0, 127);
+    color: white;
+}
+
 QMainWindow {
-    background-color: #f0f0f0;
-    min-width: 420px;
-    min-height: 420px;
+    background-color: rgb(0, 0, 127);
+    color: white;
 }
 
-#centralWidget {
-    background-color: #557755;
-    margin: 10px;
-    border-radius: 5px;
+QLabel[class=TitleLabel] {
+    font-family: Verdana;
+    font-size: 30px;
+    color: white;
 }
 
-/* Для логотипа */
-QLabel#logoLabel {
-    max-width: 200px;
-    max-height: 200px;
-    background: transparent;
-    margin-bottom: 15px;
+QLabel#app_info_label {
+    font-size: 10pt;
 }
 
-/* Для навбара */
-QFrame#navFrame {
-    max-width: 240px;
-    background: #2C2C2C;
-    border-right: 1px solid #404040;
+QLabel#team_info_label {
+    font-size: 30px;
 }
 
-/* Для кнопок */
+QLabel#player_under_avatar_label {
+    font-size: 30px;
+}
+
+QLabel#player_info_label {
+    font-size: 30px;
+}
+
+QLineEdit, QComboBox, QTextEdit {
+    font-family: Verdana;
+    font-size: 30px;
+    color: white;
+    background-color: #444;
+}
+
 QPushButton {
+    background-color: rgb(0, 0, 127);
+    border-style: outset;
+    border-width: 2px;
+    border-color: white;
+    font: 30px;
     color: white;
-    text-align: left;
-    padding: 12px 20px;
-    border-radius: 5px;
 }
-
 QPushButton:hover {
-    background: #404040;
+    background-color: rgb(0, 42, 206);
 }
-
-#menubar {
-    background-color: #aa5599;
-    color: white;
-}
-
-#statusbar {
-    background-color: #333;
-    color: white;
+QPushButton:pressed {
+    background-color: rgb(0, 24, 151);
 }

@@ -1,12 +1,12 @@
 from PyQt5.QtWidgets import QWidget, QLabel, QHBoxLayout, QVBoxLayout, QApplication, QFrame
-from PyQt5.QtCore import Qt, pyqtSignal, QSize
-from PyQt5.QtGui import QPixmap, QFont
+from PyQt5.QtCore import Qt, pyqtSignal, QSize, QByteArray
+from PyQt5.QtGui import QPixmap, QFont, QIcon
 
 
 class PlayerWidget(QWidget):
     clicked = pyqtSignal()  # Определяем сигнал
 
-    def __init__(self, text1, text2, image_path='user.png', parent=None):
+    def __init__(self, text1, text2, image_path: bytearray or None, parent=None):
         super().__init__(parent)
 
         # Настройки основного виджета (прозрачный фон)
@@ -31,7 +31,7 @@ class PlayerWidget(QWidget):
         self.image_label = QLabel()
         pixmap = QPixmap(image_path)
         self.image_label.setMaximumSize(QSize(80, 80))
-        self.image_label.setPixmap(pixmap.scaled(80, 80, Qt.KeepAspectRatio, Qt.SmoothTransformation))
+        set_widget_image(self.image_label, image_path)
         layout.addWidget(self.image_label, alignment=Qt.AlignTop)
 
         # Вертикальный layout для текста
@@ -60,6 +60,9 @@ class PlayerWidget(QWidget):
         self.setAutoFillBackground(False)
         self.setCursor(Qt.PointingHandCursor)
 
+    def get_image_label(self):
+        return self.image_label
+
     def mousePressEvent(self, event):
         self.clicked.emit()  # Испускаем сигнал при нажатии
         super().mousePressEvent(event)
@@ -81,10 +84,10 @@ class VersusWidget(QWidget):
     clicked = pyqtSignal()
 
     def __init__(self,
-                 left_image_path: str,
+                 left_image: bytearray or None,
                  left_text1: str,
                  left_text2: str,
-                 right_image_path: str,
+                 right_image: bytearray or None,
                  right_text1: str,
                  right_text2: str,
                  parent=None):
@@ -115,7 +118,7 @@ class VersusWidget(QWidget):
         # Картинка (слева)
         left_img = QLabel()
         left_img.setFixedWidth(80)
-        left_img.setPixmap(QPixmap(left_image_path).scaled(80, 80, Qt.KeepAspectRatio, Qt.SmoothTransformation))
+        set_widget_image(left_img, left_image)
         left_block.addWidget(left_img)
 
         # Вертикальный layout для текста (справа от картинки)
@@ -137,7 +140,7 @@ class VersusWidget(QWidget):
 
         # Центральная надпись
         vs_label = QLabel("VS")
-        vs_label.setFont(QFont("Arial", 40, QFont.Bold))
+        vs_label.setFont(QFont("Arial", 30, QFont.Bold))
         vs_label.setStyleSheet("color: white;")
         layout.addWidget(vs_label, alignment=Qt.AlignCenter)
 
@@ -164,7 +167,7 @@ class VersusWidget(QWidget):
         # Картинка (справа)
         right_img = QLabel()
         right_img.setFixedWidth(80)
-        right_img.setPixmap(QPixmap(right_image_path).scaled(80, 80, Qt.KeepAspectRatio, Qt.SmoothTransformation))
+        set_widget_image(right_img, right_image)
         right_block.addWidget(right_img)
 
         layout.addLayout(right_block)
@@ -203,3 +206,19 @@ class ClickableLabel(QLabel):
     def mousePressEvent(self, event):
         self.clicked.emit()
         super().mousePressEvent(event)
+
+
+def set_widget_image(widget, image_data):
+
+    if type(image_data) == bytearray:
+        pixmap = QPixmap()
+        pixmap.loadFromData(QByteArray(image_data))
+    else:  # Если данные пустые - используем изображение по умолчанию
+        pixmap = QPixmap("app/gui/images/user.png")
+
+    # Устанавливаем изображение виджету
+    if hasattr(widget, 'setPixmap'):  # Для QLabel и подобных
+        widget.setPixmap(pixmap.scaled(widget.width(), widget.height(),
+                                       Qt.KeepAspectRatio, Qt.SmoothTransformation))
+    elif hasattr(widget, 'setIcon'):  # Для QPushButton и подобных
+        widget.setIcon(QIcon(pixmap))

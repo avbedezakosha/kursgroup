@@ -1,10 +1,13 @@
 # -*- coding: utf-8 -*-
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtCore import QByteArray, Qt
+from PyQt5.QtGui import QPixmap, QIcon
+
 from app.db.models.matches import Matches
 from app.db.models.players import Players
 from app.db.models.teams import Teams
-from app.gui.myWidgets import ClickableLabel, PlayerWidget, VersusWidget
+from app.gui.myWidgets import ClickableLabel, PlayerWidget, VersusWidget, set_widget_image
 
 # Загрузка данных
 all_teams = Teams.all()
@@ -17,12 +20,12 @@ class MainWindowUI:
         main_window.setObjectName("MainWindow")
         main_window.resize(1178, 663)
 
-        # Настройка цветовой палитры и стилей
-        self.setup_palette_and_styles(main_window)
-
         # Создание центрального виджета
         self.central_widget = QtWidgets.QWidget(main_window)
         self.central_widget.setObjectName("central_widget")
+
+        # Настройка цветовой палитры и стилей
+        self.setup_palette_and_styles(main_window)
 
         # Основной макет
         self.main_layout = QtWidgets.QGridLayout(self.central_widget)
@@ -45,11 +48,16 @@ class MainWindowUI:
         self.setup_connections()
 
         # Установка начальной страницы
-        self.stacked_widget.setCurrentIndex(6)
+        self.stacked_widget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(main_window)
 
     def setup_palette_and_styles(self, window):
         """Настройка цветовой палитры и стилей для главного окна"""
+
+        with open('app/gui/ui/styles/main.qss', "r") as f:
+            stylesheet = f.read()
+            self.central_widget.setStyleSheet(stylesheet)
+
         palette = QtGui.QPalette()
         palette.setColor(QtGui.QPalette.Window, QtGui.QColor(0, 0, 127))
         palette.setColor(QtGui.QPalette.WindowText, QtGui.QColor(255, 255, 255))
@@ -59,29 +67,13 @@ class MainWindowUI:
         font.setFamily("Verdana")
         window.setFont(font)
 
-        self.sidebar_style = """
-            QPushButton {
-                background-color: rgb(0, 0, 127);
-                border-style: outset;
-                border-width: 2px;
-                border-color: white;
-                font: 30px;
-                color: white;
-            }
-            QPushButton:hover {
-                background-color: rgb(0, 42, 206);
-            }
-            QPushButton:pressed {
-                background-color: rgb(0, 24, 151);
-            }
-        """
+
 
     def setup_sidebar(self):
         """Настройка боковой панели"""
         self.sidebar_frame = QtWidgets.QFrame()
         self.sidebar_frame.setMinimumWidth(300)
         self.sidebar_frame.setMaximumWidth(300)
-        self.sidebar_frame.setStyleSheet(self.sidebar_style)
 
         self.sidebar_layout = QtWidgets.QVBoxLayout(self.sidebar_frame)
         self.sidebar_layout.setContentsMargins(0, 0, 0, 0)
@@ -140,7 +132,8 @@ class MainWindowUI:
         self.app_info_layout.setContentsMargins(0, 0, 0, 0)
 
         self.app_info_label = QtWidgets.QLabel("GameTracker ver. 1.0.0")
-        self.app_info_label.setFont(QtGui.QFont("Verdana", 10))
+        self.app_info_label.setObjectName('app_info_label')
+        self.app_info_label.setAlignment(QtCore.Qt.AlignBottom | QtCore.Qt.AlignLeft)
 
         self.app_info_layout.addWidget(self.app_info_label)
         self.sidebar_layout.addWidget(self.app_info_frame)
@@ -155,6 +148,7 @@ class MainWindowUI:
         # Виджет с переключаемыми страницами
         self.stacked_widget = QtWidgets.QStackedWidget(self.main_content_frame)
         self.stacked_widget.setFrameShape(QtWidgets.QFrame.Box)
+
 
         # Создание страниц
         self.setup_main_page()
@@ -181,6 +175,7 @@ class MainWindowUI:
 
         self.main_header_layout = QtWidgets.QGridLayout(self.main_header)
         self.main_header_label = QtWidgets.QLabel("НОВОСТИ")
+        self.main_header_label.setProperty('class', 'TitleLabel')
         self.main_header_label.setAlignment(QtCore.Qt.AlignCenter)
 
         self.main_header_layout.addWidget(self.main_header_label, 0, 0, 1, 1)
@@ -208,6 +203,7 @@ class MainWindowUI:
 
         self.matches_header_layout = QtWidgets.QVBoxLayout(self.matches_header)
         self.matches_header_label = QtWidgets.QLabel("МАТЧИ")
+        self.matches_header_label.setProperty('class', 'TitleLabel')
         self.matches_header_label.setAlignment(QtCore.Qt.AlignCenter)
 
         self.matches_header_layout.addWidget(self.matches_header_label)
@@ -222,10 +218,10 @@ class MainWindowUI:
         self.matches_scroll.setWidgetResizable(True)
 
         self.matches_scroll_content = QtWidgets.QWidget()
-        self.matches_scroll_content.setGeometry(QtCore.QRect(0, 0, 870, 85))
         self.matches_scroll_layout = QtWidgets.QVBoxLayout(self.matches_scroll_content)
         self.matches_scroll_layout.setContentsMargins(0, 0, 0, 10)
         self.matches_scroll_layout.setSpacing(0)
+        self.matches_scroll_layout.setAlignment(QtCore.Qt.AlignTop)
 
         # Добавление матчей
         for match in all_matches:
@@ -238,11 +234,14 @@ class MainWindowUI:
             )
             self.matches_scroll_layout.addWidget(versus_widget)
 
-            versus_widget.mousePressEvent = lambda event: self.handle_widget_click(event.widget())
+            # Создаем замыкание с явным сохранением значений
+            def temp_match_handler(m, t1, t2):
+                return lambda: self.handle_match_click(m, t1, t2)
+            versus_widget.clicked.connect(temp_match_handler(match, team1, team2))
 
         self.matches_scroll.setWidget(self.matches_scroll_content)
         self.matches_list_layout.addWidget(self.matches_scroll, 0, 0, 1, 1)
-        self.matches_container_layout.addWidget(self.matches_list_frame, 0, QtCore.Qt.AlignTop)
+        self.matches_container_layout.addWidget(self.matches_list_frame, 0)
 
         self.matches_layout.addWidget(self.matches_container, 0, 0, 1, 1)
         self.stacked_widget.addWidget(self.matches_page)
@@ -267,6 +266,7 @@ class MainWindowUI:
 
         self.players_header_layout = QtWidgets.QVBoxLayout(self.players_header)
         self.players_header_label = QtWidgets.QLabel("ИГРОКИ")
+        self.players_header_label.setProperty('class', 'TitleLabel')
         self.players_header_label.setAlignment(QtCore.Qt.AlignCenter)
 
         self.players_header_layout.addWidget(self.players_header_label)
@@ -285,6 +285,7 @@ class MainWindowUI:
         self.players_scroll_content.setGeometry(QtCore.QRect(0, 0, 870, 298))
         self.players_scroll_layout = QtWidgets.QVBoxLayout(self.players_scroll_content)
         self.players_scroll_layout.setContentsMargins(0, 0, 0, 0)
+        self.players_scroll_layout.setAlignment(QtCore.Qt.AlignTop)
 
         # Добавление игроков
         for player in all_players:
@@ -295,11 +296,13 @@ class MainWindowUI:
             )
             self.players_scroll_layout.addWidget(player_widget)
 
-            player_widget.mousePressEvent = lambda event: self.handle_widget_click(event.widget())
+            def temp_player_handler(p):
+                return lambda: self.handle_player_click(p)
+            player_widget.clicked.connect(temp_player_handler(player))
 
         self.players_scroll.setWidget(self.players_scroll_content)
         self.players_list_layout.addWidget(self.players_scroll, 0, 0, 1, 1)
-        self.players_container_layout.addWidget(self.players_list_frame, 0, QtCore.Qt.AlignTop)
+        self.players_container_layout.addWidget(self.players_list_frame, 0)
 
         self.players_layout.addWidget(self.players_container, 0, 0, 1, 1)
         self.stacked_widget.addWidget(self.players_page)
@@ -324,6 +327,7 @@ class MainWindowUI:
 
         self.teams_header_layout = QtWidgets.QVBoxLayout(self.teams_header)
         self.teams_header_label = QtWidgets.QLabel("КОМАНДЫ")
+        self.teams_header_label.setProperty('class', 'TitleLabel')
         self.teams_header_label.setAlignment(QtCore.Qt.AlignCenter)
 
         self.teams_header_layout.addWidget(self.teams_header_label)
@@ -341,6 +345,7 @@ class MainWindowUI:
         self.teams_scroll_content.setGeometry(QtCore.QRect(0, 0, 872, 85))
         self.teams_scroll_layout = QtWidgets.QVBoxLayout(self.teams_scroll_content)
         self.teams_scroll_layout.setContentsMargins(0, 0, 0, 0)
+        self.teams_scroll_layout.setAlignment(QtCore.Qt.AlignTop)
 
         # Добавление команд
         for team in all_teams:
@@ -351,11 +356,13 @@ class MainWindowUI:
             )
             self.teams_scroll_layout.addWidget(team_widget)
 
-            team_widget.mousePressEvent = lambda event: self.handle_widget_click(event.widget())
+            def temp_team_handler(t):
+                return lambda: self.handle_team_click(t)
+            team_widget.clicked.connect(temp_team_handler(team))
 
         self.teams_scroll.setWidget(self.teams_scroll_content)
         self.teams_list_layout.addWidget(self.teams_scroll, 0, 0, 1, 1)
-        self.teams_container_layout.addWidget(self.teams_list_frame, 0, QtCore.Qt.AlignTop)
+        self.teams_container_layout.addWidget(self.teams_list_frame, 0)
 
         self.teams_layout.addWidget(self.teams_container, 0, 0, 1, 1)
         self.stacked_widget.addWidget(self.teams_page)
@@ -374,6 +381,7 @@ class MainWindowUI:
 
         self.match_header_layout = QtWidgets.QGridLayout(self.match_header)
         self.match_name_label = QtWidgets.QLabel("МАТЧ")
+        self.match_name_label.setProperty('class', 'TitleLabel')
         self.match_name_label.setAlignment(QtCore.Qt.AlignCenter)
 
         self.match_header_layout.addWidget(self.match_name_label, 0, 0, 1, 1)
@@ -396,6 +404,7 @@ class MainWindowUI:
 
         self.team1_header_layout = QtWidgets.QGridLayout(self.team1_header)
         self.team1_name_label = QtWidgets.QLabel("Team1")
+        self.team1_name_label.setProperty('class', 'TitleLabel')
         self.team1_name_label.setAlignment(QtCore.Qt.AlignCenter)
 
         self.team1_header_layout.addWidget(self.team1_name_label, 0, 0, 1, 1)
@@ -425,6 +434,7 @@ class MainWindowUI:
 
         self.map_header_layout = QtWidgets.QGridLayout(self.map_header)
         self.map_name_label = QtWidgets.QLabel("Inferno")
+        self.map_name_label.setProperty('class', 'TitleLabel')
         self.map_name_label.setAlignment(QtCore.Qt.AlignCenter)
 
         self.map_header_layout.addWidget(self.map_name_label, 0, 0, 1, 1)
@@ -440,6 +450,7 @@ class MainWindowUI:
         self.map_image.setAlignment(QtCore.Qt.AlignCenter)
 
         self.score_label = QtWidgets.QLabel("12-4")
+        self.score_label.setProperty('class', 'TitleLabel')
         self.score_label.setAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignTop)
 
         self.map_content_layout.addWidget(self.map_image, 0, 0, 1, 1)
@@ -458,6 +469,7 @@ class MainWindowUI:
 
         self.team2_header_layout = QtWidgets.QGridLayout(self.team2_header)
         self.team2_name_label = QtWidgets.QLabel("Team2")
+        self.team2_name_label.setProperty('class', 'TitleLabel')
         self.team2_name_label.setAlignment(QtCore.Qt.AlignCenter)
 
         self.team2_header_layout.addWidget(self.team2_name_label, 0, 0, 1, 1)
@@ -505,6 +517,7 @@ class MainWindowUI:
         self.player_avatar_layout = QtWidgets.QGridLayout(self.player_avatar_frame)
 
         self.player_avatar = QtWidgets.QLabel()
+        self.player_avatar.setFrameShape(QtWidgets.QFrame.Box)
         self.player_avatar.setMaximumSize(QtCore.QSize(200, 200))
         self.player_avatar.setPixmap(QtGui.QPixmap("app/gui/images/user.png"))
         self.player_avatar.setScaledContents(True)
@@ -517,6 +530,7 @@ class MainWindowUI:
         self.player_under_avatar_layout = QtWidgets.QGridLayout(self.player_under_avatar)
 
         self.player_under_avatar_label = QtWidgets.QLabel("<html><head/><body><p><br/></p></body></html>")
+        self.player_under_avatar_label.setObjectName('player_under_avatar_label')
         self.player_under_avatar_label.setTextFormat(QtCore.Qt.RichText)
         self.player_under_avatar_label.setAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignTop)
 
@@ -539,6 +553,7 @@ class MainWindowUI:
                 <p>Телефон: 88005353535</p>
             </body></html>
         """)
+        self.player_info_label.setObjectName('player_info_label')
         self.player_info_label.setTextFormat(QtCore.Qt.RichText)
         self.player_info_label.setAlignment(QtCore.Qt.AlignLeft | QtCore.Qt.AlignTop)
 
@@ -571,8 +586,11 @@ class MainWindowUI:
         self.team_name_frame = QtWidgets.QFrame()
         self.team_name_frame.setFixedHeight(50)
         self.team_name_layout = QtWidgets.QGridLayout(self.team_name_frame)
+        self.team_name_layout.setContentsMargins(0, 0, 0, 0)
+        self.team_name_layout.setSpacing(0)
 
         self.team_name_label = QtWidgets.QLabel("ClanZaicev")
+        self.team_name_label.setProperty('class', 'TitleLabel')
         self.team_name_label.setFrameShape(QtWidgets.QFrame.Box)
         self.team_name_label.setAlignment(QtCore.Qt.AlignCenter)
 
@@ -605,6 +623,7 @@ class MainWindowUI:
         self.team_avatar_layout = QtWidgets.QGridLayout(self.team_avatar_frame)
 
         self.team_avatar = QtWidgets.QLabel()
+        self.team_avatar.setFrameShape(QtWidgets.QFrame.Box)
         self.team_avatar.setMaximumSize(QtCore.QSize(150, 150))
         self.team_avatar.setPixmap(QtGui.QPixmap("app/gui/images/user.png"))
         self.team_avatar.setScaledContents(True)
@@ -625,6 +644,7 @@ class MainWindowUI:
                 <p>Поражений: мало</p>
             </body></html>
         """)
+        self.team_info_label.setObjectName('team_info_label')
         self.team_info_label.setTextFormat(QtCore.Qt.RichText)
         self.team_info_label.setAlignment(QtCore.Qt.AlignLeft | QtCore.Qt.AlignTop)
 
@@ -652,16 +672,52 @@ class MainWindowUI:
 
     def handle_widget_click(self, widget):
         """Обработка клика по виджету"""
-        print(f"Кликнули по виджету №{widget}")
+        print(f"Кликнули по виджету №")
         self.stacked_widget.setCurrentIndex(5)
 
+    def handle_match_click(self, match, team1, team2):
+        """Обработка клика по матчу"""
 
-if __name__ == "__main__":
-    import sys
+        # Обновляем данные на странице матча
+        self.team1_name_label.setText(team1.team_name)
+        self.team2_name_label.setText(team2.team_name)
+        self.map_name_label.setText(match.map_id)
 
-    app = QtWidgets.QApplication(sys.argv)
-    MainWindow = QtWidgets.QMainWindow()
-    ui = MainWindowUI()
-    ui.setup_ui(MainWindow)
-    MainWindow.show()
-    sys.exit(app.exec_())
+        # Переключаемся на страницу матча
+        self.stacked_widget.setCurrentIndex(4)
+
+    def handle_player_click(self, player):
+        # Установка аватара
+        set_widget_image(self.player_avatar, player.profile_picture)
+
+        self.player_info_label.setText(f"""
+                    <html><head/><body>
+                        <p>Фамилия: {player.last_name}</p>
+                        <p>Имя: {player.first_name}</p>
+                        <p>Никнейм: {player.nickname}</p>
+                        <p>Страна: {player.country}</p>
+                        <p>Дата рождения: {player.date_of_birth}</p>
+                        <p>E-Mail: {player.email}</p>
+                        <p>Телефон: {player.phone}</p>
+                        <p>STEAM_ID: {player.steam_id}</p>
+                    </body></html>
+                """)
+
+        self.stacked_widget.setCurrentIndex(5)
+
+    def handle_team_click(self, team):
+        # Установка аватара
+        set_widget_image(self.team_avatar, team.logo)
+
+        self.team_name_label.setText(team.team_name)
+
+        self.team_info_label.setText(f"""
+                    <html><head/><body>
+                        <p>Страна: {team.country}</p>
+                        <p>Чё там</p>
+                        <p>Победы: много</p>
+                        <p>Поражений: мало</p>
+                    </body></html>
+                """)
+
+        self.stacked_widget.setCurrentIndex(6)
