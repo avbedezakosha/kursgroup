@@ -32,9 +32,8 @@ QLabel#player_info_label {
 
 QLineEdit, QComboBox, QTextEdit {
     font-family: Verdana;
-    font-size: 30px;
+    font-size: 16pt;
     color: white;
-    background-color: #444;
 }
 
 QPushButton {

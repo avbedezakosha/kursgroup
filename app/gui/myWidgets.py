@@ -9,6 +9,9 @@ class PlayerWidget(QWidget):
     def __init__(self, text1, text2, image_path: bytearray or None, parent=None):
         super().__init__(parent)
 
+        self.text1 = text1
+        self.text2 = text2
+
         # Настройки основного виджета (прозрачный фон)
         self.setAttribute(Qt.WA_TranslucentBackground)
         self.setFixedHeight(100)  # 100px контент + 2px сверху + 2px снизу
@@ -85,14 +88,19 @@ class VersusWidget(QWidget):
 
     def __init__(self,
                  left_image: bytearray or None,
-                 left_text1: str,
-                 left_text2: str,
+                 team1_name: str,
+                 team1_country: str,
                  right_image: bytearray or None,
-                 right_text1: str,
-                 right_text2: str,
+                 team2_name: str,
+                 team2_country: str,
                  parent=None):
         super().__init__(parent)
-
+        
+        self.team1_name = team1_name
+        self.team1_country = team1_country
+        self.team2_name = team2_name
+        self.team2_country = team2_country
+        
         # Настройки основного виджета (прозрачный фон)
         self.setAttribute(Qt.WA_TranslucentBackground)
         self.setFixedHeight(100)  # 100px контент + 2px сверху + 2px снизу
@@ -126,12 +134,12 @@ class VersusWidget(QWidget):
         left_text_layout.setSpacing(2)
 
         # Надпись 1 (30px)
-        left_label1 = QLabel(str(left_text1))
+        left_label1 = QLabel(str(self.team1_name))
         left_label1.setStyleSheet("color: white; font-size: 30px;")
         left_text_layout.addWidget(left_label1)
 
         # Надпись 2 (26px)
-        left_label2 = QLabel(str(left_text2))
+        left_label2 = QLabel(str(self.team1_country))
         left_label2.setStyleSheet("color: white; font-size: 26px;")
         left_text_layout.addWidget(left_label2)
 
@@ -153,12 +161,12 @@ class VersusWidget(QWidget):
         right_text_layout.setSpacing(2)
 
         # Надпись 1 (30px)
-        right_label1 = QLabel(right_text1)
+        right_label1 = QLabel(str(self.team2_name))
         right_label1.setStyleSheet("color: white; font-size: 30px;")
         right_text_layout.addWidget(right_label1, alignment=Qt.AlignRight)
 
         # Надпись 2 (26px)
-        right_label2 = QLabel(str(right_text2))
+        right_label2 = QLabel(str(self.team2_country))
         right_label2.setStyleSheet("color: white; font-size: 26px;")
         right_text_layout.addWidget(right_label2, alignment=Qt.AlignRight)
 

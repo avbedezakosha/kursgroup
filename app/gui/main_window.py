@@ -201,12 +201,24 @@ class MainWindowUI:
         self.matches_header.setFixedHeight(50)
         self.matches_header.setFrameShape(QtWidgets.QFrame.Box)
 
-        self.matches_header_layout = QtWidgets.QVBoxLayout(self.matches_header)
+        self.matches_header_layout = QtWidgets.QHBoxLayout(self.matches_header)
+        self.matches_header_layout.setContentsMargins(10, 0, 10, 0)
+
+        # Лейбл "МАТЧИ" слева
         self.matches_header_label = QtWidgets.QLabel("МАТЧИ")
         self.matches_header_label.setProperty('class', 'TitleLabel')
-        self.matches_header_label.setAlignment(QtCore.Qt.AlignCenter)
+        self.matches_header_label.setAlignment(QtCore.Qt.AlignLeft | QtCore.Qt.AlignVCenter)
 
+        # Строка поиска
+        self.matches_search = QtWidgets.QLineEdit()
+        self.matches_search.setPlaceholderText("Поиск матчей...")
+        search_icon = QIcon("app/gui/images/search.png")
+        self.matches_search.addAction(search_icon, QtWidgets.QLineEdit.LeadingPosition)
+
+        # Добавляем элементы в заголовок
         self.matches_header_layout.addWidget(self.matches_header_label)
+        self.matches_header_layout.addWidget(self.matches_search)
+
         self.matches_container_layout.addWidget(self.matches_header)
 
         # Список матчей
@@ -224,6 +236,8 @@ class MainWindowUI:
         self.matches_scroll_layout.setAlignment(QtCore.Qt.AlignTop)
 
         # Добавление матчей
+        self.all_match_widgets = []
+
         for match in all_matches:
             team1 = next((team for team in all_teams if match.team1_id == team.team_id), None)
             team2 = next((team for team in all_teams if match.team2_id == team.team_id), None)
@@ -232,6 +246,7 @@ class MainWindowUI:
                 team1.logo, team1.team_name, team1.country,
                 team2.logo, team2.team_name, team2.country
             )
+            self.all_match_widgets.append(versus_widget)
             self.matches_scroll_layout.addWidget(versus_widget)
 
             # Создаем замыкание с явным сохранением значений
@@ -245,6 +260,9 @@ class MainWindowUI:
 
         self.matches_layout.addWidget(self.matches_container, 0, 0, 1, 1)
         self.stacked_widget.addWidget(self.matches_page)
+
+        # Подключение строки поиска
+        self.matches_search.textChanged.connect(self.handle_matches_search)
 
     def setup_players_page(self):
         """Настройка страницы игроков"""
@@ -264,12 +282,22 @@ class MainWindowUI:
         self.players_header.setFixedHeight(50)
         self.players_header.setFrameShape(QtWidgets.QFrame.Box)
 
-        self.players_header_layout = QtWidgets.QVBoxLayout(self.players_header)
+        self.players_header_layout = QtWidgets.QHBoxLayout(self.players_header)
+        self.players_header_layout.setContentsMargins(10, 0, 10, 0)
         self.players_header_label = QtWidgets.QLabel("ИГРОКИ")
         self.players_header_label.setProperty('class', 'TitleLabel')
-        self.players_header_label.setAlignment(QtCore.Qt.AlignCenter)
+        self.players_header_label.setAlignment(QtCore.Qt.AlignLeft | QtCore.Qt.AlignVCenter)
 
+        # Строка поиска
+        self.players_search = QtWidgets.QLineEdit()
+        self.players_search.setPlaceholderText("Поиск игроков...")
+        search_icon = QIcon("app/gui/images/search.png")
+        self.players_search.addAction(search_icon, QtWidgets.QLineEdit.LeadingPosition)
+
+        # Добавляем элементы в заголовок
         self.players_header_layout.addWidget(self.players_header_label)
+        self.players_header_layout.addWidget(self.players_search)
+
         self.players_container_layout.addWidget(self.players_header)
 
         # Список игроков
@@ -288,12 +316,15 @@ class MainWindowUI:
         self.players_scroll_layout.setAlignment(QtCore.Qt.AlignTop)
 
         # Добавление игроков
+        self.all_player_widgets = []
+
         for player in all_players:
             player_widget = PlayerWidget(
                 f'{player.last_name} "{player.nickname}" {player.first_name}',
                 player.country,
                 player.profile_picture
             )
+            self.all_player_widgets.append(player_widget)
             self.players_scroll_layout.addWidget(player_widget)
 
             def temp_player_handler(p):
@@ -306,6 +337,9 @@ class MainWindowUI:
 
         self.players_layout.addWidget(self.players_container, 0, 0, 1, 1)
         self.stacked_widget.addWidget(self.players_page)
+
+        # Подключение поиска игроков
+        self.players_search.textChanged.connect(self.handle_players_search)
 
     def setup_teams_page(self):
         """Настройка страницы команд"""
@@ -325,12 +359,22 @@ class MainWindowUI:
         self.teams_header.setFixedHeight(50)
         self.teams_header.setFrameShape(QtWidgets.QFrame.Box)
 
-        self.teams_header_layout = QtWidgets.QVBoxLayout(self.teams_header)
+        self.teams_header_layout = QtWidgets.QHBoxLayout(self.teams_header)
+        self.teams_header_layout.setContentsMargins(10, 0, 10, 0)
         self.teams_header_label = QtWidgets.QLabel("КОМАНДЫ")
         self.teams_header_label.setProperty('class', 'TitleLabel')
-        self.teams_header_label.setAlignment(QtCore.Qt.AlignCenter)
+        self.teams_header_label.setAlignment(QtCore.Qt.AlignLeft | QtCore.Qt.AlignVCenter)
 
+        # Строка поиска
+        self.teams_search = QtWidgets.QLineEdit()
+        self.teams_search.setPlaceholderText("Поиск команд...")
+        search_icon = QIcon("app/gui/images/search.png")
+        self.teams_search.addAction(search_icon, QtWidgets.QLineEdit.LeadingPosition)
+
+        # Добавляем элементы в заголовок
         self.teams_header_layout.addWidget(self.teams_header_label)
+        self.teams_header_layout.addWidget(self.teams_search)
+
         self.teams_container_layout.addWidget(self.teams_header)
 
         # Список команд
@@ -348,12 +392,15 @@ class MainWindowUI:
         self.teams_scroll_layout.setAlignment(QtCore.Qt.AlignTop)
 
         # Добавление команд
+        self.all_team_widgets = []
+
         for team in all_teams:
             team_widget = PlayerWidget(
                 str(team.team_name),
                 str(team.country),
                 team.logo
             )
+            self.all_team_widgets.append(team_widget)
             self.teams_scroll_layout.addWidget(team_widget)
 
             def temp_team_handler(t):
@@ -366,6 +413,9 @@ class MainWindowUI:
 
         self.teams_layout.addWidget(self.teams_container, 0, 0, 1, 1)
         self.stacked_widget.addWidget(self.teams_page)
+
+        # Подключение поиска команд
+        self.teams_search.textChanged.connect(self.handle_teams_search)
 
     def setup_match_detail_page(self):
         """Настройка страницы деталей матча"""
@@ -400,7 +450,7 @@ class MainWindowUI:
         self.team1_layout.setSpacing(0)
 
         self.team1_header = QtWidgets.QFrame()
-        self.team1_header.setFixedHeight(50)
+        self.team1_header.setFixedHeight(60)
 
         self.team1_header_layout = QtWidgets.QGridLayout(self.team1_header)
         self.team1_name_label = QtWidgets.QLabel("Team1")
@@ -418,7 +468,6 @@ class MainWindowUI:
         for i in range(5):
             player_widget = PlayerWidget(f'Player {i}', 'Country', 'app/gui/images/user.png')
             self.team1_players_layout.addWidget(player_widget)
-            player_widget.mousePressEvent = lambda event, num=i: self.handle_widget_click(event.widget(), num)
 
         self.team1_layout.addWidget(self.team1_players, 0, QtCore.Qt.AlignTop)
         self.match_content_layout.addWidget(self.team1_frame)
@@ -430,9 +479,11 @@ class MainWindowUI:
         self.match_center_layout.setSpacing(0)
 
         self.map_header = QtWidgets.QFrame()
-        self.map_header.setFixedHeight(50)
+        self.map_header.setFixedHeight(60)
 
         self.map_header_layout = QtWidgets.QGridLayout(self.map_header)
+        self.map_header_layout.setContentsMargins(0, 0, 0, 0)
+        self.map_header_layout.setAlignment(QtCore.Qt.AlignCenter)
         self.map_name_label = QtWidgets.QLabel("Inferno")
         self.map_name_label.setProperty('class', 'TitleLabel')
         self.map_name_label.setAlignment(QtCore.Qt.AlignCenter)
@@ -465,7 +516,7 @@ class MainWindowUI:
         self.team2_layout.setSpacing(0)
 
         self.team2_header = QtWidgets.QFrame()
-        self.team2_header.setFixedHeight(50)
+        self.team2_header.setFixedHeight(60)
 
         self.team2_header_layout = QtWidgets.QGridLayout(self.team2_header)
         self.team2_name_label = QtWidgets.QLabel("Team2")
@@ -483,7 +534,6 @@ class MainWindowUI:
         for i in range(5):
             player_widget = PlayerWidget(f'Player {i}', 'Country', 'app/gui/images/user.png')
             self.team2_players_layout.addWidget(player_widget)
-            player_widget.mousePressEvent = lambda event, num=i: self.handle_widget_click(event.widget(), num)
 
         self.team2_layout.addWidget(self.team2_players, 0, QtCore.Qt.AlignTop)
         self.match_content_layout.addWidget(self.team2_frame)
@@ -605,7 +655,6 @@ class MainWindowUI:
         for i in range(5):
             player_widget = PlayerWidget(f'Player {i}', 'Country', 'app/gui/images/user.png')
             self.team_players_layout.addWidget(player_widget)
-            player_widget.mousePressEvent = lambda event, num=i: self.handle_widget_click(event.widget(), num)
 
         self.team_left_layout.addWidget(self.team_players_frame, 0, QtCore.Qt.AlignTop)
         self.team_container_layout.addWidget(self.team_left)
@@ -721,3 +770,63 @@ class MainWindowUI:
                 """)
 
         self.stacked_widget.setCurrentIndex(6)
+
+    def handle_matches_search(self):
+        search_text = self.matches_search.text().lower().strip()
+
+        if not search_text:
+            # Если строка поиска пуста - показать все элементы
+            for widget in self.all_match_widgets:
+                widget.show()
+            return
+
+        for widget in self.all_match_widgets:
+
+            team1_name = str(getattr(widget, 'team1_name', ''))
+            team1_country = str(getattr(widget, 'team1_country', ''))
+            team2_name = str(getattr(widget, 'team2_name', ''))
+            team2_country = str(getattr(widget, 'team2_country', ''))
+
+            match_found = (search_text in team1_name.lower() or
+                           search_text in team1_country.lower() or
+                           search_text in team2_name.lower() or
+                           search_text in team2_country.lower())
+
+            widget.setVisible(match_found)
+
+    def handle_players_search(self):
+        search_text = self.players_search.text().lower().strip()
+
+        if not search_text:
+            # Если строка поиска пуста - показать все элементы
+            for widget in self.all_player_widgets:
+                widget.show()
+            return
+
+        for widget in self.all_player_widgets:
+
+            player_name = str(getattr(widget, 'text1', ''))
+            player_country = str(getattr(widget, 'text2', ''))
+
+            player_found = (search_text in player_name.lower() or
+                           search_text in player_country.lower())
+
+            widget.setVisible(player_found)
+
+    def handle_teams_search(self):
+        search_text = self.teams_search.text().lower().strip()
+
+        if not search_text:
+            # Если строка поиска пуста - показать все элементы
+            for widget in self.all_team_widgets:
+                widget.show()
+            return
+
+        for widget in self.all_team_widgets:
+            team_name = str(getattr(widget, 'text1', ''))
+            team_country = str(getattr(widget, 'text2', ''))
+
+            player_found = (search_text in team_name.lower() or
+                            search_text in team_country.lower())
+
+            widget.setVisible(player_found)
