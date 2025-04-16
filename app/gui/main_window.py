@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import os
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import QByteArray, Qt
@@ -7,12 +8,18 @@ from PyQt5.QtGui import QPixmap, QIcon
 from app.db.models.matches import Matches
 from app.db.models.players import Players
 from app.db.models.teams import Teams
+from app.db.models.current_lineups import CurrentLineups
+from app.db.models.match_lineups import MatchLineups
+from app.db.models.maps import Maps
 from app.gui.myWidgets import ClickableLabel, PlayerWidget, VersusWidget, set_widget_image
 
 # Загрузка данных
 all_teams = Teams.all()
 all_matches = Matches.all()
 all_players = Players.all()
+all_team_lineups = CurrentLineups.all()
+all_match_lineups = MatchLineups.all()
+all_maps = Maps.all()
 
 
 class MainWindowUI:
@@ -719,21 +726,72 @@ class MainWindowUI:
         # 5 - page_player
         # 6 - page_team
 
-    def handle_widget_click(self, widget):
-        """Обработка клика по виджету"""
-        print(f"Кликнули по виджету №")
-        self.stacked_widget.setCurrentIndex(5)
-
+    # Обработка нажатия по записям ----------------------------------------------------
     def handle_match_click(self, match, team1, team2):
-        """Обработка клика по матчу"""
+        """Обработка клика по матчу с отображением полной информации"""
+        try:
+            mapa = [mp for mp in all_maps if mp.map_id == match.map_id][0]
+            # Обновляем основные данные матча
+            self.match_name_label.setText(f"{team1.team_name} vs {team2.team_name}")
+            self.team1_name_label.setText(team1.team_name)
+            self.team2_name_label.setText(team2.team_name)
+            self.map_name_label.setText(mapa.map_name)
 
-        # Обновляем данные на странице матча
-        self.team1_name_label.setText(team1.team_name)
-        self.team2_name_label.setText(team2.team_name)
-        self.map_name_label.setText(match.map_id)
+            # Устанавливаем логотипы команд
+            # set_widget_image(self.team1_logo, team1.logo)  # Предполагается, что team1_logo существует
+            # set_widget_image(self.team2_logo, team2.logo)  # Предполагается, что team2_logo существует
 
-        # Переключаемся на страницу матча
-        self.stacked_widget.setCurrentIndex(4)
+            # Устанавливаем карту
+            set_widget_image(self.map_image, mapa.image)
+
+            # Устанавливаем счет
+            # self.score_label.setText(f"{match.team1_score}-{match.team2_score}")
+
+            # Очищаем предыдущие составы команд
+            for i in reversed(range(self.team1_players_layout.count())):
+                self.team1_players_layout.itemAt(i).widget().setParent(None)
+            for i in reversed(range(self.team2_players_layout.count())):
+                self.team2_players_layout.itemAt(i).widget().setParent(None)
+
+            # Получаем составы команд для этого матча
+            match_lineups = [ml for ml in all_match_lineups if ml.match_id == match.match_id]
+
+            # Добавляем игроков команды 1
+            team1_lineup = [ml for ml in match_lineups if ml.team_id == team1.team_id]
+            for lineup in team1_lineup:
+                player = next((p for p in all_players if p.player_id == lineup.player_id), None)
+                if player:
+                    player_widget = PlayerWidget(
+                        f'"{player.nickname}"',
+                        player.country,
+                        player.profile_picture
+                    )
+                    self.team1_players_layout.addWidget(player_widget)
+
+                    # def temp_player_handler(t):
+                    #     return lambda: self.handle_player_click(t)
+                    # player_widget.clicked.connect(temp_player_handler(player))
+
+            # Добавляем игроков команды 2
+            team2_lineup = [ml for ml in match_lineups if ml.team_id == team2.team_id]
+            for lineup in team2_lineup:
+                player = next((p for p in all_players if p.player_id == lineup.player_id), None)
+                if player:
+                    player_widget = PlayerWidget(
+                        f'"{player.nickname}"',
+                        player.country,
+                        player.profile_picture
+                    )
+                    self.team2_players_layout.addWidget(player_widget)
+
+                    # def temp_player_handler(t):
+                    #     return lambda: self.handle_player_click(t)
+                    # player_widget.clicked.connect(temp_player_handler(player))
+
+            # Переключаемся на страницу матча
+            self.stacked_widget.setCurrentIndex(4)
+        except Exception as ex:
+            print(ex)
 
     def handle_player_click(self, player):
         # Установка аватара
@@ -769,8 +827,36 @@ class MainWindowUI:
                     </body></html>
                 """)
 
+        # Очищаем игроков команды
+        for i in reversed(range(self.team_players_layout.count())):
+            widget = self.team_players_layout.itemAt(i).widget()
+            if widget is not None:
+                widget.setParent(None)
+
+        # Получаем состав команды
+        team_lineups = [lp for lp in all_team_lineups if team.team_id == lp.team_id]
+        if not team_lineups:
+            return
+
+        # Добавляем игроков команды
+        for lineup in team_lineups:
+            player = next((pl for pl in all_players if lineup.player_id == pl.player_id), None)
+            if player is not None:
+                player_widget = PlayerWidget(
+                    f'{player.last_name} "{player.nickname}" {player.first_name}',
+                    player.country,
+                    player.profile_picture
+                )
+                self.team_players_layout.addWidget(player_widget)
+
+                # Подключаем обработчик клика
+                # def temp_player_handler(t):
+                #     return lambda: self.handle_player_click(t)
+                # player_widget.clicked.connect(temp_player_handler(player))
+
         self.stacked_widget.setCurrentIndex(6)
 
+    # Обработка поиска ----------------------------------------------------------------
     def handle_matches_search(self):
         search_text = self.matches_search.text().lower().strip()
 

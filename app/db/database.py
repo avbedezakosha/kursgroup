@@ -147,7 +147,7 @@ class Database:
                     item["team_id"],
                     item["team_name"],
                     item.get("logo", ""),
-                    item["captain_id"]
+                    item["country"]
                 ) for item in results
             ]
         elif table == "players":
@@ -165,6 +165,31 @@ class Database:
                     item.get("profile_picture", None)
                 ) for item in results
             ]
+        elif table == "maps":
+            return [
+                (
+                    item["map_id"],
+                    item["map_name"],
+                    item["image"]
+                ) for item in results
+            ]
+        elif table == "current_lineups":
+            return [
+                (
+                    item["lineup_id"],
+                    item["player_id"],
+                    item["team_id"]
+                ) for item in results
+            ]
+        elif table == "match_lineups":
+            return [
+                (
+                    item["lineup_id"],
+                    item["match_id"],
+                    item["player_id"],
+                    item["team_id"]
+                ) for item in results
+            ]
         return []
 
     def _detect_table(self, query: str) -> str:
@@ -172,10 +197,13 @@ class Database:
         if "from players" in query: return "players"
         if "from teams" in query: return "teams"
         if "from matches" in query: return "matches"
+        if "from current_lineups" in query: return "current_lineups"
+        if "from match_lineups" in query: return "match_lineups"
+        if "from maps" in query: return "maps"
         raise ValueError("Unknown table in query")
 
     def _load_mock_data(self) -> dict:
-        with open(self.mock_file, "r") as f:
+        with open(self.mock_file, "r", encoding='utf-8') as f:
             return json.load(f)
 
     def _save_mock_data(self, data: dict):

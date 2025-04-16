@@ -2,917 +2,678 @@
   "players": [
     {
       "player_id": 1,
-      "nickname": "Player1",
-      "first_name": "John",
-      "last_name": "Doe",
-      "email": "john@example.com",
-      "phone": "+1234567890",
-      "country": "USA",
-      "date_of_birth": "1990-01-01",
-      "steam_id": "STEAM_1",
+      "nickname": "s1mple",
+      "first_name": "Oleksandr",
+      "last_name": "Kostyliev",
+      "email": "s1mple@example.com",
+      "phone": "+380123456789",
+      "country": "Ukraine",
+      "date_of_birth": "1997-10-02",
+      "steam_id": "76561197960287930",
       "profile_picture": null
     },
     {
       "player_id": 2,
-      "nickname": "Shadow",
-      "first_name": "Mike",
-      "last_name": "Smith",
-      "email": "mike@example.com",
-      "phone": "+1987654321",
-      "country": "Canada",
-      "date_of_birth": "1992-05-15",
-      "steam_id": "STEAM_2",
-      "profile_picture": "shadow.jpg"
+      "nickname": "ZywOo",
+      "first_name": "Mathieu",
+      "last_name": "Herbaut",
+      "email": "zywoo@example.com",
+      "phone": "+33123456789",
+      "country": "France",
+      "date_of_birth": "2000-11-09",
+      "steam_id": "76561198080393967",
+      "profile_picture": null
     },
     {
       "player_id": 3,
-      "nickname": "Raven",
-      "first_name": "Sarah",
-      "last_name": "Johnson",
-      "email": "sarah@example.com",
-      "phone": "+44123456789",
-      "country": "UK",
-      "date_of_birth": "1995-08-20",
-      "steam_id": "STEAM_3",
-      "profile_picture": "raven.png"
+      "nickname": "NiKo",
+      "first_name": "Nikola",
+      "last_name": "Kovač",
+      "email": "niko@example.com",
+      "phone": "+38712345678",
+      "country": "Bosnia",
+      "date_of_birth": "1997-02-16",
+      "steam_id": "76561198080393968",
+      "profile_picture": null
     },
     {
       "player_id": 4,
-      "nickname": "Frost",
-      "first_name": "Alex",
-      "last_name": "Brown",
-      "email": "alex@example.com",
-      "phone": "+61456789012",
-      "country": "Australia",
-      "date_of_birth": "1993-11-30",
-      "steam_id": "STEAM_4",
+      "nickname": "device",
+      "first_name": "Nicolai",
+      "last_name": "Reedtz",
+      "email": "device@example.com",
+      "phone": "+4512345678",
+      "country": "Denmark",
+      "date_of_birth": "1995-09-28",
+      "steam_id": "76561197960287931",
       "profile_picture": null
     },
     {
       "player_id": 5,
-      "nickname": "Neo",
-      "first_name": "Thomas",
-      "last_name": "Anderson",
-      "email": "neo@example.com",
-      "phone": "+49876543210",
-      "country": "Germany",
-      "date_of_birth": "1989-03-25",
-      "steam_id": "STEAM_5",
-      "profile_picture": "neo.jpg"
+      "nickname": "shroud",
+      "first_name": "Michael",
+      "last_name": "Grzesiek",
+      "email": "shroud@example.com",
+      "phone": "+12015551234",
+      "country": "Canada",
+      "date_of_birth": "1994-06-02",
+      "steam_id": "76561197960287932",
+      "profile_picture": null
     },
     {
       "player_id": 6,
-      "nickname": "Zed",
-      "first_name": "Kevin",
-      "last_name": "Wilson",
-      "email": "kevin@example.com",
-      "phone": "+33123456789",
-      "country": "France",
-      "date_of_birth": "1994-07-12",
-      "steam_id": "STEAM_6",
+      "nickname": "coldzera",
+      "first_name": "Marcelo",
+      "last_name": "David",
+      "email": "coldzera@example.com",
+      "phone": "+551123456789",
+      "country": "Brazil",
+      "date_of_birth": "1994-10-31",
+      "steam_id": "76561197960287933",
       "profile_picture": null
     },
     {
       "player_id": 7,
-      "nickname": "Viper",
-      "first_name": "Emma",
-      "last_name": "Davis",
-      "email": "emma@example.com",
-      "phone": "+81123456789",
-      "country": "Japan",
-      "date_of_birth": "1996-09-05",
-      "steam_id": "STEAM_7",
-      "profile_picture": "viper.png"
+      "nickname": "f0rest",
+      "first_name": "Patrik",
+      "last_name": "Lindberg",
+      "email": "f0rest@example.com",
+      "phone": "+46123456789",
+      "country": "Sweden",
+      "date_of_birth": "1988-06-10",
+      "steam_id": "76561197960287934",
+      "profile_picture": null
     },
     {
       "player_id": 8,
-      "nickname": "Joker",
-      "first_name": "Jack",
-      "last_name": "Miller",
-      "email": "jack@example.com",
-      "phone": "+86123456789",
-      "country": "China",
-      "date_of_birth": "1991-12-18",
-      "steam_id": "STEAM_8",
+      "nickname": "kennyS",
+      "first_name": "Kenny",
+      "last_name": "Schrub",
+      "email": "kennyS@example.com",
+      "phone": "+33123456780",
+      "country": "France",
+      "date_of_birth": "1995-05-19",
+      "steam_id": "76561197960287935",
       "profile_picture": null
     },
     {
       "player_id": 9,
-      "nickname": "Ghost",
-      "first_name": "Daniel",
-      "last_name": "Taylor",
-      "email": "daniel@example.com",
-      "phone": "+79123456789",
-      "country": "Russia",
-      "date_of_birth": "1997-04-22",
-      "steam_id": "STEAM_9",
-      "profile_picture": "ghost.jpg"
+      "nickname": "dupreeh",
+      "first_name": "Peter",
+      "last_name": "Rasmussen",
+      "email": "dupreeh@example.com",
+      "phone": "+4512345679",
+      "country": "Denmark",
+      "date_of_birth": "1993-03-26",
+      "steam_id": "76561197960287936",
+      "profile_picture": null
     },
     {
       "player_id": 10,
-      "nickname": "Phoenix",
-      "first_name": "Liam",
-      "last_name": "Martinez",
-      "email": "liam@example.com",
-      "phone": "+55123456789",
-      "country": "Brazil",
-      "date_of_birth": "1998-06-14",
-      "steam_id": "STEAM_10",
+      "nickname": "EliGE",
+      "first_name": "Jonathan",
+      "last_name": "Jablonowski",
+      "email": "elige@example.com",
+      "phone": "+12025551234",
+      "country": "USA",
+      "date_of_birth": "1997-07-16",
+      "steam_id": "76561197960287937",
       "profile_picture": null
     },
     {
       "player_id": 11,
-      "nickname": "Rogue",
-      "first_name": "Olivia",
-      "last_name": "Garcia",
-      "email": "olivia@example.com",
-      "phone": "+52123456789",
-      "country": "Mexico",
-      "date_of_birth": "1995-02-28",
-      "steam_id": "STEAM_11",
-      "profile_picture": "rogue.png"
+      "nickname": "ropz",
+      "first_name": "Robin",
+      "last_name": "Kool",
+      "email": "ropz@example.com",
+      "phone": "+37212345678",
+      "country": "Estonia",
+      "date_of_birth": "1999-12-22",
+      "steam_id": "76561197960287938",
+      "profile_picture": null
     },
     {
       "player_id": 12,
-      "nickname": "Sage",
-      "first_name": "Sophia",
-      "last_name": "Lee",
-      "email": "sophia@example.com",
-      "phone": "+82123456789",
-      "country": "South Korea",
-      "date_of_birth": "1994-10-11",
-      "steam_id": "STEAM_12",
+      "nickname": "KSCERATO",
+      "first_name": "Kaike",
+      "last_name": "Cerato",
+      "email": "kscerato@example.com",
+      "phone": "+551123456780",
+      "country": "Brazil",
+      "date_of_birth": "1999-05-16",
+      "steam_id": "76561197960287939",
       "profile_picture": null
     },
     {
       "player_id": 13,
-      "nickname": "Brimstone",
-      "first_name": "Noah",
-      "last_name": "Clark",
-      "email": "noah@example.com",
-      "phone": "+61234567890",
-      "country": "Australia",
-      "date_of_birth": "1993-08-07",
-      "steam_id": "STEAM_13",
-      "profile_picture": "brimstone.jpg"
+      "nickname": "YEKINDAR",
+      "first_name": "Mareks",
+      "last_name": "Gaļinskis",
+      "email": "yekindar@example.com",
+      "phone": "+37112345678",
+      "country": "Latvia",
+      "date_of_birth": "1999-08-05",
+      "steam_id": "76561197960287940",
+      "profile_picture": null
     },
     {
       "player_id": 14,
-      "nickname": "Cypher",
-      "first_name": "Ava",
-      "last_name": "Rodriguez",
-      "email": "ava@example.com",
-      "phone": "+34123456789",
-      "country": "Spain",
-      "date_of_birth": "1996-01-19",
-      "steam_id": "STEAM_14",
+      "nickname": "b1t",
+      "first_name": "Valeriy",
+      "last_name": "Vakhovskiy",
+      "email": "b1t@example.com",
+      "phone": "+380123456780",
+      "country": "Ukraine",
+      "date_of_birth": "2003-04-01",
+      "steam_id": "76561197960287941",
       "profile_picture": null
     },
     {
       "player_id": 15,
-      "nickname": "Sova",
-      "first_name": "William",
-      "last_name": "Hernandez",
-      "email": "william@example.com",
-      "phone": "+39123456789",
-      "country": "Italy",
-      "date_of_birth": "1992-07-03",
-      "steam_id": "STEAM_15",
-      "profile_picture": "sova.png"
+      "nickname": "Ax1Le",
+      "first_name": "Sergey",
+      "last_name": "Rykhtorov",
+      "email": "ax1le@example.com",
+      "phone": "+79112345678",
+      "country": "Russia",
+      "date_of_birth": "2002-04-01",
+      "steam_id": "76561197960287942",
+      "profile_picture": null
     },
     {
       "player_id": 16,
-      "nickname": "Killjoy",
-      "first_name": "Isabella",
-      "last_name": "Lopez",
-      "email": "isabella@example.com",
-      "phone": "+49123456789",
-      "country": "Germany",
-      "date_of_birth": "1997-11-25",
-      "steam_id": "STEAM_16",
+      "nickname": "Jame",
+      "first_name": "Dzhami",
+      "last_name": "Ali",
+      "email": "jame@example.com",
+      "phone": "+79112345679",
+      "country": "Russia",
+      "date_of_birth": "1998-05-05",
+      "steam_id": "76561197960287943",
       "profile_picture": null
     },
     {
       "player_id": 17,
-      "nickname": "Reyna",
-      "first_name": "James",
-      "last_name": "Gonzalez",
-      "email": "james@example.com",
-      "phone": "+52123456789",
-      "country": "Mexico",
-      "date_of_birth": "1994-04-16",
-      "steam_id": "STEAM_17",
-      "profile_picture": "reyna.jpg"
+      "nickname": "m0NESY",
+      "first_name": "Ilya",
+      "last_name": "Osipov",
+      "email": "m0nesy@example.com",
+      "phone": "+79112345680",
+      "country": "Russia",
+      "date_of_birth": "2004-05-01",
+      "steam_id": "76561197960287944",
+      "profile_picture": null
     },
     {
       "player_id": 18,
-      "nickname": "Omen",
-      "first_name": "Benjamin",
-      "last_name": "Wilson",
-      "email": "benjamin@example.com",
-      "phone": "+44234567890",
-      "country": "UK",
-      "date_of_birth": "1991-09-08",
-      "steam_id": "STEAM_18",
+      "nickname": "HObbit",
+      "first_name": "Abay",
+      "last_name": "Khasenov",
+      "email": "hobbit@example.com",
+      "phone": "+77112345678",
+      "country": "Kazakhstan",
+      "date_of_birth": "1994-01-02",
+      "steam_id": "76561197960287945",
       "profile_picture": null
     },
     {
       "player_id": 19,
-      "nickname": "Breach",
-      "first_name": "Mia",
-      "last_name": "Anderson",
-      "email": "mia@example.com",
-      "phone": "+46123456789",
-      "country": "Sweden",
-      "date_of_birth": "1998-12-30",
-      "steam_id": "STEAM_19",
-      "profile_picture": "breach.png"
+      "nickname": "NAF",
+      "first_name": "Keith",
+      "last_name": "Markovic",
+      "email": "naf@example.com",
+      "phone": "+12035551234",
+      "country": "Canada",
+      "date_of_birth": "1997-06-28",
+      "steam_id": "76561197960287946",
+      "profile_picture": null
     },
     {
       "player_id": 20,
-      "nickname": "Skye",
-      "first_name": "Elijah",
-      "last_name": "Thomas",
-      "email": "elijah@example.com",
-      "phone": "+61234567890",
-      "country": "Australia",
-      "date_of_birth": "1995-05-21",
-      "steam_id": "STEAM_20",
+      "nickname": "Twistzz",
+      "first_name": "Russel",
+      "last_name": "Van Dulken",
+      "email": "twistzz@example.com",
+      "phone": "+12045551234",
+      "country": "Canada",
+      "date_of_birth": "1999-11-14",
+      "steam_id": "76561197960287947",
       "profile_picture": null
-    },
-    {
-      "player_id": 21,
-      "nickname": "Yoru",
-      "first_name": "Charlotte",
-      "last_name": "Jackson",
-      "email": "charlotte@example.com",
-      "phone": "+81345678901",
-      "country": "Japan",
-      "date_of_birth": "1993-10-14",
-      "steam_id": "STEAM_21",
-      "profile_picture": "yoru.jpg"
-    },
-    {
-      "player_id": 22,
-      "nickname": "Astra",
-      "first_name": "Lucas",
-      "last_name": "White",
-      "email": "lucas@example.com",
-      "phone": "+33123456789",
-      "country": "France",
-      "date_of_birth": "1996-03-27",
-      "steam_id": "STEAM_22",
-      "profile_picture": null
-    },
-    {
-      "player_id": 23,
-      "nickname": "KAY/O",
-      "first_name": "Amelia",
-      "last_name": "Harris",
-      "email": "amelia@example.com",
-      "phone": "+14123456789",
-      "country": "USA",
-      "date_of_birth": "1994-08-09",
-      "steam_id": "STEAM_23",
-      "profile_picture": "kayo.png"
-    },
-    {
-      "player_id": 24,
-      "nickname": "Chamber",
-      "first_name": "Mason",
-      "last_name": "Martin",
-      "email": "mason@example.com",
-      "phone": "+49876543210",
-      "country": "Germany",
-      "date_of_birth": "1997-01-12",
-      "steam_id": "STEAM_24",
-      "profile_picture": null
-    },
-    {
-      "player_id": 25,
-      "nickname": "Fade",
-      "first_name": "Harper",
-      "last_name": "Thompson",
-      "email": "harper@example.com",
-      "phone": "+44123456789",
-      "country": "UK",
-      "date_of_birth": "1992-06-24",
-      "steam_id": "STEAM_25",
-      "profile_picture": "fade.jpg"
-    },
-    {
-      "player_id": 26,
-      "nickname": "Harbor",
-      "first_name": "Ethan",
-      "last_name": "Garcia",
-      "email": "ethan@example.com",
-      "phone": "+911234567890",
-      "country": "India",
-      "date_of_birth": "1995-11-17",
-      "steam_id": "STEAM_26",
-      "profile_picture": null
-    },
-    {
-      "player_id": 27,
-      "nickname": "Gekko",
-      "first_name": "Evelyn",
-      "last_name": "Martinez",
-      "email": "evelyn@example.com",
-      "phone": "+52123456789",
-      "country": "Mexico",
-      "date_of_birth": "1998-04-03",
-      "steam_id": "STEAM_27",
-      "profile_picture": "gekko.png"
-    },
-    {
-      "player_id": 28,
-      "nickname": "Deadlock",
-      "first_name": "Logan",
-      "last_name": "Robinson",
-      "email": "logan@example.com",
-      "phone": "+46123456789",
-      "country": "Sweden",
-      "date_of_birth": "1993-09-26",
-      "steam_id": "STEAM_28",
-      "profile_picture": null
-    },
-    {
-      "player_id": 29,
-      "nickname": "Iso",
-      "first_name": "Abigail",
-      "last_name": "Clark",
-      "email": "abigail@example.com",
-      "phone": "+61456789012",
-      "country": "Australia",
-      "date_of_birth": "1996-02-15",
-      "steam_id": "STEAM_29",
-      "profile_picture": "iso.jpg"
-    },
-    {
-      "player_id": 30,
-      "nickname": "Clove",
-      "first_name": "Alexander",
-      "last_name": "Rodriguez",
-      "email": "alexander@example.com",
-      "phone": "+55123456789",
-      "country": "Brazil",
-      "date_of_birth": "1994-07-08",
-      "steam_id": "STEAM_30",
-      "profile_picture": null
-    },
-    {
-      "player_id": 31,
-      "nickname": "Neon",
-      "first_name": "Emily",
-      "last_name": "Lewis",
-      "email": "emily@example.com",
-      "phone": "+63234567890",
-      "country": "Philippines",
-      "date_of_birth": "1997-12-21",
-      "steam_id": "STEAM_31",
-      "profile_picture": "neon.png"
-    },
-    {
-      "player_id": 32,
-      "nickname": "Jett",
-      "first_name": "Michael",
-      "last_name": "Walker",
-      "email": "michael@example.com",
-      "phone": "+82123456789",
-      "country": "South Korea",
-      "date_of_birth": "1993-05-04",
-      "steam_id": "STEAM_32",
-      "profile_picture": null
-    },
-    {
-      "player_id": 33,
-      "nickname": "Raze",
-      "first_name": "Madison",
-      "last_name": "Hall",
-      "email": "madison@example.com",
-      "phone": "+79123456789",
-      "country": "Russia",
-      "date_of_birth": "1995-10-27",
-      "steam_id": "STEAM_33",
-      "profile_picture": "raze.jpg"
-    },
-    {
-      "player_id": 34,
-      "nickname": "Viper",
-      "first_name": "Daniel",
-      "last_name": "Allen",
-      "email": "daniel@example.com",
-      "phone": "+86123456789",
-      "country": "China",
-      "date_of_birth": "1992-03-18",
-      "steam_id": "STEAM_34",
-      "profile_picture": null
-    },
-    {
-      "player_id": 35,
-      "nickname": "Omen",
-      "first_name": "Avery",
-      "last_name": "Young",
-      "email": "avery@example.com",
-      "phone": "+14123456789",
-      "country": "USA",
-      "date_of_birth": "1998-08-11",
-      "steam_id": "STEAM_35",
-      "profile_picture": "omen.png"
     }
   ],
   "teams": [
     {
       "team_id": 1,
-      "team_name": "Team Alpha",
+      "team_name": "Natus Vincere",
       "logo": null,
-      "captain_id": 1
+      "country": "Ukraine"
     },
     {
       "team_id": 2,
-      "team_name": "Team Bravo",
-      "logo": "bravo.png",
-      "captain_id": 3
+      "team_name": "Team Vitality",
+      "logo": null,
+      "country": "France"
     },
     {
       "team_id": 3,
-      "team_name": "Team Charlie",
+      "team_name": "G2 Esports",
       "logo": null,
-      "captain_id": 5
+      "country": "Europe"
     },
     {
       "team_id": 4,
-      "team_name": "Team Delta",
-      "logo": "delta.jpg",
-      "captain_id": 7
-    },
-    {
-      "team_id": 5,
-      "team_name": "Team Echo",
+      "team_name": "Astralis",
       "logo": null,
-      "captain_id": 9
+      "country": "Denmark"
+    }
+  ],
+  "maps": [
+    {
+      "map_id": 1,
+      "map_name": "Mirage",
+      "image": null
     },
     {
-      "team_id": 6,
-      "team_name": "Team Foxtrot",
-      "logo": "foxtrot.png",
-      "captain_id": 11
+      "map_id": 2,
+      "map_name": "Inferno",
+      "image": null
     },
     {
-      "team_id": 7,
-      "team_name": "Team Golf",
-      "logo": null,
-      "captain_id": 13
+      "map_id": 3,
+      "map_name": "Dust2",
+      "image": null
     },
     {
-      "team_id": 8,
-      "team_name": "Team Hotel",
-      "logo": "hotel.jpg",
-      "captain_id": 15
+      "map_id": 4,
+      "map_name": "Overpass",
+      "image": null
     },
     {
-      "team_id": 9,
-      "team_name": "Team India",
-      "logo": null,
-      "captain_id": 17
+      "map_id": 5,
+      "map_name": "Nuke",
+      "image": null
     },
     {
-      "team_id": 10,
-      "team_name": "Team Juliet",
-      "logo": "juliet.png",
-      "captain_id": 19
+      "map_id": 6,
+      "map_name": "Vertigo",
+      "image": null
     },
     {
-      "team_id": 11,
-      "team_name": "Team Kilo",
-      "logo": null,
-      "captain_id": 21
+      "map_id": 7,
+      "map_name": "Ancient",
+      "image": null
     },
     {
-      "team_id": 12,
-      "team_name": "Team Lima",
-      "logo": "lima.jpg",
-      "captain_id": 23
+      "map_id": 8,
+      "map_name": "Anubis",
+      "image": null
     },
     {
-      "team_id": 13,
-      "team_name": "Team Mike",
-      "logo": null,
-      "captain_id": 25
+      "map_id": 9,
+      "map_name": "Cache",
+      "image": null
     },
     {
-      "team_id": 14,
-      "team_name": "Team November",
-      "logo": "november.png",
-      "captain_id": 27
+      "map_id": 10,
+      "map_name": "Cobblestone",
+      "image": null
     },
     {
-      "team_id": 15,
-      "team_name": "Team Oscar",
-      "logo": null,
-      "captain_id": 29
+      "map_id": 11,
+      "map_name": "Train",
+      "image": null
     },
     {
-      "team_id": 16,
-      "team_name": "Team Papa",
-      "logo": "papa.jpg",
-      "captain_id": 31
+      "map_id": 12,
+      "map_name": "Tuscan",
+      "image": null
     },
     {
-      "team_id": 17,
-      "team_name": "Team Quebec",
-      "logo": null,
-      "captain_id": 33
+      "map_id": 13,
+      "map_name": "Season",
+      "image": null
     },
     {
-      "team_id": 18,
-      "team_name": "Team Romeo",
-      "logo": "romeo.png",
-      "captain_id": 2
+      "map_id": 14,
+      "map_name": "Mill",
+      "image": null
     },
     {
-      "team_id": 19,
-      "team_name": "Team Sierra",
-      "logo": null,
-      "captain_id": 4
+      "map_id": 15,
+      "map_name": "Santorini",
+      "image": null
     },
     {
-      "team_id": 20,
-      "team_name": "Team Tango",
-      "logo": "tango.jpg",
-      "captain_id": 6
+      "map_id": 16,
+      "map_name": "Agency",
+      "image": null
     },
     {
-      "team_id": 21,
-      "team_name": "Team Uniform",
-      "logo": null,
-      "captain_id": 8
+      "map_id": 17,
+      "map_name": "Office",
+      "image": null
     },
     {
-      "team_id": 22,
-      "team_name": "Team Victor",
-      "logo": "victor.png",
-      "captain_id": 10
+      "map_id": 18,
+      "map_name": "Italy",
+      "image": null
     },
     {
-      "team_id": 23,
-      "team_name": "Team Whiskey",
-      "logo": null,
-      "captain_id": 12
+      "map_id": 19,
+      "map_name": "Aztec",
+      "image": null
     },
     {
-      "team_id": 24,
-      "team_name": "Team X-ray",
-      "logo": "xray.jpg",
-      "captain_id": 14
-    },
-    {
-      "team_id": 25,
-      "team_name": "Team Yankee",
-      "logo": null,
-      "captain_id": 16
-    },
-    {
-      "team_id": 26,
-      "team_name": "Team Zulu",
-      "logo": "zulu.png",
-      "captain_id": 18
-    },
-    {
-      "team_id": 27,
-      "team_name": "Team Ace",
-      "logo": null,
-      "captain_id": 20
-    },
-    {
-      "team_id": 28,
-      "team_name": "Team King",
-      "logo": "king.jpg",
-      "captain_id": 22
-    },
-    {
-      "team_id": 29,
-      "team_name": "Team Queen",
-      "logo": null,
-      "captain_id": 24
-    },
-    {
-      "team_id": 30,
-      "team_name": "Team Jack",
-      "logo": "jack.png",
-      "captain_id": 26
-    },
-    {
-      "team_id": 31,
-      "team_name": "Team Ten",
-      "logo": null,
-      "captain_id": 28
-    },
-    {
-      "team_id": 32,
-      "team_name": "Team Nine",
-      "logo": "nine.jpg",
-      "captain_id": 30
-    },
-    {
-      "team_id": 33,
-      "team_name": "Team Eight",
-      "logo": null,
-      "captain_id": 32
-    },
-    {
-      "team_id": 34,
-      "team_name": "Team Seven",
-      "logo": "seven.png",
-      "captain_id": 34
-    },
-    {
-      "team_id": 35,
-      "team_name": "Team Six",
-      "logo": null,
-      "captain_id": 35
+      "map_id": 20,
+      "map_name": "Dust",
+      "image": null
     }
   ],
   "matches": [
-    {
-      "match_id": 1,
-      "map_id": "de_dust2",
-      "team1_id": 1,
-      "team2_id": 2,
-      "match_date": "2024-01-01T12:00:00",
-      "match_status": "upcoming"
-    },
-    {
-      "match_id": 2,
-      "map_id": "de_inferno",
-      "team1_id": 3,
-      "team2_id": 4,
-      "match_date": "2024-01-02T14:00:00",
-      "match_status": "finished"
-    },
-    {
-      "match_id": 3,
-      "map_id": "de_mirage",
-      "team1_id": 5,
-      "team2_id": 6,
-      "match_date": "2024-01-03T16:00:00",
-      "match_status": "upcoming"
-    },
-    {
-      "match_id": 4,
-      "map_id": "de_overpass",
-      "team1_id": 7,
-      "team2_id": 8,
-      "match_date": "2024-01-04T18:00:00",
-      "match_status": "ongoing"
-    },
-    {
-      "match_id": 5,
-      "map_id": "de_vertigo",
-      "team1_id": 9,
-      "team2_id": 10,
-      "match_date": "2024-01-05T20:00:00",
-      "match_status": "upcoming"
-    },
-    {
-      "match_id": 6,
-      "map_id": "de_nuke",
-      "team1_id": 11,
-      "team2_id": 12,
-      "match_date": "2024-01-06T12:00:00",
-      "match_status": "finished"
-    },
-    {
-      "match_id": 7,
-      "map_id": "de_ancient",
-      "team1_id": 13,
-      "team2_id": 14,
-      "match_date": "2024-01-07T14:00:00",
-      "match_status": "upcoming"
-    },
-    {
-      "match_id": 8,
-      "map_id": "de_cache",
-      "team1_id": 15,
-      "team2_id": 16,
-      "match_date": "2024-01-08T16:00:00",
-      "match_status": "finished"
-    },
-    {
-      "match_id": 9,
-      "map_id": "de_train",
-      "team1_id": 17,
-      "team2_id": 18,
-      "match_date": "2024-01-09T18:00:00",
-      "match_status": "upcoming"
-    },
-    {
-      "match_id": 10,
-      "map_id": "de_dust2",
-      "team1_id": 19,
-      "team2_id": 20,
-      "match_date": "2024-01-10T20:00:00",
-      "match_status": "ongoing"
-    },
-    {
-      "match_id": 11,
-      "map_id": "de_inferno",
-      "team1_id": 21,
-      "team2_id": 22,
-      "match_date": "2024-01-11T12:00:00",
-      "match_status": "upcoming"
-    },
-    {
-      "match_id": 12,
-      "map_id": "de_mirage",
-      "team1_id": 23,
-      "team2_id": 24,
-      "match_date": "2024-01-12T14:00:00",
-      "match_status": "finished"
-    },
-    {
-      "match_id": 13,
-      "map_id": "de_overpass",
-      "team1_id": 25,
-      "team2_id": 26,
-      "match_date": "2024-01-13T16:00:00",
-      "match_status": "upcoming"
-    },
-    {
-      "match_id": 14,
-      "map_id": "de_vertigo",
-      "team1_id": 27,
-      "team2_id": 28,
-      "match_date": "2024-01-14T18:00:00",
-      "match_status": "finished"
-    },
-    {
-      "match_id": 15,
-      "map_id": "de_nuke",
-      "team1_id": 29,
-      "team2_id": 30,
-      "match_date": "2024-01-15T20:00:00",
-      "match_status": "upcoming"
-    },
-    {
-      "match_id": 16,
-      "map_id": "de_ancient",
-      "team1_id": 31,
-      "team2_id": 32,
-      "match_date": "2024-01-16T12:00:00",
-      "match_status": "ongoing"
-    },
-    {
-      "match_id": 17,
-      "map_id": "de_cache",
-      "team1_id": 33,
-      "team2_id": 34,
-      "match_date": "2024-01-17T14:00:00",
-      "match_status": "upcoming"
-    },
-    {
-      "match_id": 18,
-      "map_id": "de_train",
-      "team1_id": 35,
-      "team2_id": 1,
-      "match_date": "2024-01-18T16:00:00",
-      "match_status": "finished"
-    },
-    {
-      "match_id": 19,
-      "map_id": "de_dust2",
-      "team1_id": 2,
-      "team2_id": 3,
-      "match_date": "2024-01-19T18:00:00",
-      "match_status": "upcoming"
-    },
-    {
-      "match_id": 20,
-      "map_id": "de_inferno",
-      "team1_id": 4,
-      "team2_id": 5,
-      "match_date": "2024-01-20T20:00:00",
-      "match_status": "finished"
-    },
-    {
-      "match_id": 21,
-      "map_id": "de_mirage",
-      "team1_id": 6,
-      "team2_id": 7,
-      "match_date": "2024-01-21T12:00:00",
-      "match_status": "upcoming"
-    },
-    {
-      "match_id": 22,
-      "map_id": "de_overpass",
-      "team1_id": 8,
-      "team2_id": 9,
-      "match_date": "2024-01-22T14:00:00",
-      "match_status": "ongoing"
-    },
-    {
-      "match_id": 23,
-      "map_id": "de_vertigo",
-      "team1_id": 10,
-      "team2_id": 11,
-      "match_date": "2024-01-23T16:00:00",
-      "match_status": "upcoming"
-    },
-    {
-      "match_id": 24,
-      "map_id": "de_nuke",
-      "team1_id": 12,
-      "team2_id": 13,
-      "match_date": "2024-01-24T18:00:00",
-      "match_status": "finished"
-    },
-    {
-      "match_id": 25,
-      "map_id": "de_ancient",
-      "team1_id": 14,
-      "team2_id": 15,
-      "match_date": "2024-01-25T20:00:00",
-      "match_status": "upcoming"
-    },
-    {
-      "match_id": 26,
-      "map_id": "de_cache",
-      "team1_id": 16,
-      "team2_id": 17,
-      "match_date": "2024-01-26T12:00:00",
-      "match_status": "finished"
-    },
-    {
-      "match_id": 27,
-      "map_id": "de_train",
-      "team1_id": 18,
-      "team2_id": 19,
-      "match_date": "2024-01-27T14:00:00",
-      "match_status": "upcoming"
-    },
-    {
-      "match_id": 28,
-      "map_id": "de_dust2",
-      "team1_id": 20,
-      "team2_id": 21,
-      "match_date": "2024-01-28T16:00:00",
-      "match_status": "ongoing"
-    },
-    {
-      "match_id": 29,
-      "map_id": "de_inferno",
-      "team1_id": 22,
-      "team2_id": 23,
-      "match_date": "2024-01-29T18:00:00",
-      "match_status": "upcoming"
-    },
-    {
-      "match_id": 30,
-      "map_id": "de_mirage",
-      "team1_id": 24,
-      "team2_id": 25,
-      "match_date": "2024-01-30T20:00:00",
-      "match_status": "finished"
-    },
-    {
-      "match_id": 31,
-      "map_id": "de_overpass",
-      "team1_id": 26,
-      "team2_id": 27,
-      "match_date": "2024-01-31T12:00:00",
-      "match_status": "upcoming"
-    },
-    {
-      "match_id": 32,
-      "map_id": "de_vertigo",
-      "team1_id": 28,
-      "team2_id": 29,
-      "match_date": "2024-02-01T14:00:00",
-      "match_status": "finished"
-    },
-    {
-      "match_id": 33,
-      "map_id": "de_nuke",
-      "team1_id": 30,
-      "team2_id": 31,
-      "match_date": "2024-02-02T16:00:00",
-      "match_status": "upcoming"
-    },
-    {
-      "match_id": 34,
-      "map_id": "de_ancient",
-      "team1_id": 32,
-      "team2_id": 33,
-      "match_date": "2024-02-03T18:00:00",
-      "match_status": "ongoing"
-    },
-    {
-      "match_id": 35,
-      "map_id": "de_cache",
-      "team1_id": 34,
-      "team2_id": 35,
-      "match_date": "2024-02-04T20:00:00",
-      "match_status": "upcoming"
-    }
-  ]
+  {
+    "match_id": 1,
+    "map_id": 1,
+    "team1_id": 1,
+    "team2_id": 2,
+    "match_date": "2023-10-15T19:00:00",
+    "match_status": "upcoming"
+  },
+  {
+    "match_id": 2,
+    "map_id": 2,
+    "team1_id": 3,
+    "team2_id": 4,
+    "match_date": "2023-10-16T20:00:00",
+    "match_status": "ongoing"
+  },
+  {
+    "match_id": 3,
+    "map_id": 3,
+    "team1_id": 1,
+    "team2_id": 3,
+    "match_date": "2023-10-17T21:00:00",
+    "match_status": "completed"
+  },
+  {
+    "match_id": 4,
+    "map_id": 4,
+    "team1_id": 2,
+    "team2_id": 4,
+    "match_date": "2023-10-18T18:00:00",
+    "match_status": "upcoming"
+  },
+  {
+    "match_id": 5,
+    "map_id": 5,
+    "team1_id": 1,
+    "team2_id": 4,
+    "match_date": "2023-10-19T19:00:00",
+    "match_status": "upcoming"
+  },
+  {
+    "match_id": 6,
+    "map_id": 6,
+    "team1_id": 2,
+    "team2_id": 3,
+    "match_date": "2023-10-20T20:00:00",
+    "match_status": "upcoming"
+  },
+  {
+    "match_id": 7,
+    "map_id": 1,
+    "team1_id": 1,
+    "team2_id": 2,
+    "match_date": "2023-10-21T21:00:00",
+    "match_status": "upcoming"
+  },
+  {
+    "match_id": 8,
+    "map_id": 2,
+    "team1_id": 3,
+    "team2_id": 4,
+    "match_date": "2023-10-22T22:00:00",
+    "match_status": "upcoming"
+  },
+  {
+    "match_id": 9,
+    "map_id": 3,
+    "team1_id": 2,
+    "team2_id": 4,
+    "match_date": "2023-10-23T17:00:00",
+    "match_status": "upcoming"
+  },
+  {
+    "match_id": 10,
+    "map_id": 4,
+    "team1_id": 1,
+    "team2_id": 3,
+    "match_date": "2023-10-24T18:00:00",
+    "match_status": "upcoming"
+  }
+],
+  "current_lineups": [
+  {
+    "lineup_id": 1,
+    "player_id": 1,
+    "team_id": 1
+  },
+  {
+    "lineup_id": 2,
+    "player_id": 2,
+    "team_id": 1
+  },
+  {
+    "lineup_id": 3,
+    "player_id": 3,
+    "team_id": 1
+  },
+  {
+    "lineup_id": 4,
+    "player_id": 4,
+    "team_id": 1
+  },
+  {
+    "lineup_id": 5,
+    "player_id": 5,
+    "team_id": 1
+  },
+  {
+    "lineup_id": 6,
+    "player_id": 6,
+    "team_id": 2
+  },
+  {
+    "lineup_id": 7,
+    "player_id": 7,
+    "team_id": 2
+  },
+  {
+    "lineup_id": 8,
+    "player_id": 8,
+    "team_id": 2
+  },
+  {
+    "lineup_id": 9,
+    "player_id": 9,
+    "team_id": 2
+  },
+  {
+    "lineup_id": 10,
+    "player_id": 10,
+    "team_id": 2
+  },
+  {
+    "lineup_id": 11,
+    "player_id": 11,
+    "team_id": 3
+  },
+  {
+    "lineup_id": 12,
+    "player_id": 12,
+    "team_id": 3
+  },
+  {
+    "lineup_id": 13,
+    "player_id": 13,
+    "team_id": 3
+  },
+  {
+    "lineup_id": 14,
+    "player_id": 14,
+    "team_id": 3
+  },
+  {
+    "lineup_id": 15,
+    "player_id": 15,
+    "team_id": 3
+  },
+  {
+    "lineup_id": 16,
+    "player_id": 16,
+    "team_id": 4
+  },
+  {
+    "lineup_id": 17,
+    "player_id": 17,
+    "team_id": 4
+  },
+  {
+    "lineup_id": 18,
+    "player_id": 18,
+    "team_id": 4
+  },
+  {
+    "lineup_id": 19,
+    "player_id": 19,
+    "team_id": 4
+  },
+  {
+    "lineup_id": 20,
+    "player_id": 20,
+    "team_id": 4
+  }
+],
+  "match_lineups": [
+  {
+    "lineup_id": 1,
+    "match_id": 1,
+    "player_id": 1,
+    "team_id": 1
+  },
+  {
+    "lineup_id": 2,
+    "match_id": 1,
+    "player_id": 2,
+    "team_id": 1
+  },
+  {
+    "lineup_id": 3,
+    "match_id": 1,
+    "player_id": 3,
+    "team_id": 1
+  },
+  {
+    "lineup_id": 4,
+    "match_id": 1,
+    "player_id": 4,
+    "team_id": 1
+  },
+  {
+    "lineup_id": 5,
+    "match_id": 1,
+    "player_id": 5,
+    "team_id": 1
+  },
+  {
+    "lineup_id": 6,
+    "match_id": 1,
+    "player_id": 6,
+    "team_id": 2
+  },
+  {
+    "lineup_id": 7,
+    "match_id": 1,
+    "player_id": 7,
+    "team_id": 2
+  },
+  {
+    "lineup_id": 8,
+    "match_id": 1,
+    "player_id": 8,
+    "team_id": 2
+  },
+  {
+    "lineup_id": 9,
+    "match_id": 1,
+    "player_id": 9,
+    "team_id": 2
+  },
+  {
+    "lineup_id": 10,
+    "match_id": 1,
+    "player_id": 10,
+    "team_id": 2
+  },
+
+  {
+    "lineup_id": 11,
+    "match_id": 2,
+    "player_id": 11,
+    "team_id": 3
+  },
+  {
+    "lineup_id": 12,
+    "match_id": 2,
+    "player_id": 12,
+    "team_id": 3
+  },
+  {
+    "lineup_id": 13,
+    "match_id": 2,
+    "player_id": 13,
+    "team_id": 3
+  },
+  {
+    "lineup_id": 14,
+    "match_id": 2,
+    "player_id": 14,
+    "team_id": 3
+  },
+  {
+    "lineup_id": 15,
+    "match_id": 2,
+    "player_id": 15,
+    "team_id": 3
+  },
+  {
+    "lineup_id": 16,
+    "match_id": 2,
+    "player_id": 16,
+    "team_id": 4
+  },
+  {
+    "lineup_id": 17,
+    "match_id": 2,
+    "player_id": 17,
+    "team_id": 4
+  },
+  {
+    "lineup_id": 18,
+    "match_id": 2,
+    "player_id": 18,
+    "team_id": 4
+  },
+  {
+    "lineup_id": 19,
+    "match_id": 2,
+    "player_id": 19,
+    "team_id": 4
+  },
+  {
+    "lineup_id": 20,
+    "match_id": 2,
+    "player_id": 20,
+    "team_id": 4
+  }
+]
 }
