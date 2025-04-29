@@ -10,7 +10,7 @@ class Maps:
     def save(self) -> None:
         db: Database = Database()
         query: str = """
-            INSERT INTO maps (map_name, image)
+            INSERT INTO project25.maps (map_name, image)
             VALUES (%s, %s)
         """
         db.execute_query(query, (
@@ -21,7 +21,7 @@ class Maps:
     def all(cls) -> list:
         db: Database = Database()
         query: str = """
-            SELECT * FROM maps
+            SELECT * FROM project25.maps
         """
         return [cls(map_id=row[0], map_name=row[1], image=row[2]) for row in db.fetch_query(query)]
 

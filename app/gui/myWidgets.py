@@ -218,10 +218,12 @@ class ClickableLabel(QLabel):
 
 def set_widget_image(widget, image_data):
 
-    if type(image_data) == bytearray:
+    if type(image_data) == bytes:
+        print('da')
         pixmap = QPixmap()
         pixmap.loadFromData(QByteArray(image_data))
     else:  # Если данные пустые - используем изображение по умолчанию
+        print('net')
         pixmap = QPixmap("app/gui/images/user.png")
 
     # Устанавливаем изображение виджету

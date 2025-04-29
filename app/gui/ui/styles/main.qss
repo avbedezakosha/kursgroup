@@ -1,10 +1,10 @@
 QWidget {
-    background-color: rgb(0, 0, 127);
+    background-color: rgb(97, 108, 133);
     color: white;
 }
 
 QMainWindow {
-    background-color: rgb(0, 0, 127);
+    background-color: rgb(97, 108, 133);
     color: white;
 }
 
@@ -37,7 +37,7 @@ QLineEdit, QComboBox, QTextEdit {
 }
 
 QPushButton {
-    background-color: rgb(0, 0, 127);
+    background-color: rgb(80, 90, 110);
     border-style: outset;
     border-width: 2px;
     border-color: white;
@@ -45,8 +45,8 @@ QPushButton {
     color: white;
 }
 QPushButton:hover {
-    background-color: rgb(0, 42, 206);
+    background-color: rgb(110, 120, 140);
 }
 QPushButton:pressed {
-    background-color: rgb(0, 24, 151);
+    background-color: rgb(80, 90, 110);
 }

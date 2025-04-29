@@ -23,9 +23,22 @@ all_maps = Maps.all()
 
 
 class MainWindowUI:
+    @staticmethod
+    def split_first_last_name(player):
+        first_last_name = player.first_last_name.split()
+        first_name = first_last_name[0]
+        last_name = 'Отсутствует'
+        if len(first_last_name) < 2:
+            return first_name, last_name, f'"{player.nickname}" {first_last_name[0]}'
+        else:
+            last_name = first_last_name[1]
+            return first_name, last_name, f'{first_last_name[1]} "{player.nickname}" {first_last_name[0]}'
+
     def setup_ui(self, main_window):
         main_window.setObjectName("MainWindow")
         main_window.resize(1178, 663)
+        main_window.setWindowTitle('GameTracker')
+        main_window.setWindowIcon(QIcon('app/gui/images/logo.jpg'))
 
         # Создание центрального виджета
         self.central_widget = QtWidgets.QWidget(main_window)
@@ -55,7 +68,7 @@ class MainWindowUI:
         self.setup_connections()
 
         # Установка начальной страницы
-        self.stacked_widget.setCurrentIndex(0)
+        self.stacked_widget.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(main_window)
 
     def setup_palette_and_styles(self, window):
@@ -65,16 +78,14 @@ class MainWindowUI:
             stylesheet = f.read()
             self.central_widget.setStyleSheet(stylesheet)
 
-        palette = QtGui.QPalette()
-        palette.setColor(QtGui.QPalette.Window, QtGui.QColor(0, 0, 127))
-        palette.setColor(QtGui.QPalette.WindowText, QtGui.QColor(255, 255, 255))
-        window.setPalette(palette)
+        # palette = QtGui.QPalette()
+        # palette.setColor(QtGui.QPalette.Window, QtGui.QColor(0, 0, 127))
+        # palette.setColor(QtGui.QPalette.WindowText, QtGui.QColor(255, 255, 255))
+        # window.setPalette(palette)
 
         font = QtGui.QFont()
         font.setFamily("Verdana")
         window.setFont(font)
-
-
 
     def setup_sidebar(self):
         """Настройка боковой панели"""
@@ -155,7 +166,6 @@ class MainWindowUI:
         # Виджет с переключаемыми страницами
         self.stacked_widget = QtWidgets.QStackedWidget(self.main_content_frame)
         self.stacked_widget.setFrameShape(QtWidgets.QFrame.Box)
-
 
         # Создание страниц
         self.setup_main_page()
@@ -327,9 +337,9 @@ class MainWindowUI:
 
         for player in all_players:
             player_widget = PlayerWidget(
-                f'{player.last_name} "{player.nickname}" {player.first_name}',
+                self.split_first_last_name(player)[2],
                 player.country,
-                player.profile_picture
+                player.avatar
             )
             self.all_player_widgets.append(player_widget)
             self.players_scroll_layout.addWidget(player_widget)
@@ -503,7 +513,7 @@ class MainWindowUI:
 
         self.map_image = QtWidgets.QLabel()
         self.map_image.setMaximumSize(QtCore.QSize(300, 300))
-        self.map_image.setPixmap(QtGui.QPixmap("app/gui/images/maps/Inferno.png"))
+        self.map_image.setPixmap(QtGui.QPixmap("app/gui/images/maps/Inferno.png").scaled(self.map_image.size(), QtCore.Qt.KeepAspectRatio))
         self.map_image.setScaledContents(True)
         self.map_image.setAlignment(QtCore.Qt.AlignCenter)
 
@@ -695,9 +705,6 @@ class MainWindowUI:
         self.team_info_label = QtWidgets.QLabel("""
             <html><head/><body>
                 <p>Страна: Россия</p>
-                <p>Чё там</p>
-                <p>Победы: много</p>
-                <p>Поражений: мало</p>
             </body></html>
         """)
         self.team_info_label.setObjectName('team_info_label')
@@ -745,7 +752,10 @@ class MainWindowUI:
             set_widget_image(self.map_image, mapa.image)
 
             # Устанавливаем счет
-            # self.score_label.setText(f"{match.team1_score}-{match.team2_score}")
+            if match.team1_score and match.team2_score:
+                self.score_label.setText(f"{match.team1_score}-{match.team2_score}\n{match.match_status}")
+            else:
+                self.score_label.setText(f"{match.match_status}")
 
             # Очищаем предыдущие составы команд
             for i in reversed(range(self.team1_players_layout.count())):
@@ -764,7 +774,7 @@ class MainWindowUI:
                     player_widget = PlayerWidget(
                         f'"{player.nickname}"',
                         player.country,
-                        player.profile_picture
+                        player.avatar
                     )
                     self.team1_players_layout.addWidget(player_widget)
 
@@ -780,7 +790,7 @@ class MainWindowUI:
                     player_widget = PlayerWidget(
                         f'"{player.nickname}"',
                         player.country,
-                        player.profile_picture
+                        player.avatar
                     )
                     self.team2_players_layout.addWidget(player_widget)
 
@@ -795,12 +805,12 @@ class MainWindowUI:
 
     def handle_player_click(self, player):
         # Установка аватара
-        set_widget_image(self.player_avatar, player.profile_picture)
+        set_widget_image(self.player_avatar, player.avatar)
 
         self.player_info_label.setText(f"""
                     <html><head/><body>
-                        <p>Фамилия: {player.last_name}</p>
-                        <p>Имя: {player.first_name}</p>
+                        <p>Фамилия: {self.split_first_last_name(player)[1]}</p>
+                        <p>Имя: {self.split_first_last_name(player)[0]}</p>
                         <p>Никнейм: {player.nickname}</p>
                         <p>Страна: {player.country}</p>
                         <p>Дата рождения: {player.date_of_birth}</p>
@@ -821,9 +831,6 @@ class MainWindowUI:
         self.team_info_label.setText(f"""
                     <html><head/><body>
                         <p>Страна: {team.country}</p>
-                        <p>Чё там</p>
-                        <p>Победы: много</p>
-                        <p>Поражений: мало</p>
                     </body></html>
                 """)
 
@@ -843,9 +850,9 @@ class MainWindowUI:
             player = next((pl for pl in all_players if lineup.player_id == pl.player_id), None)
             if player is not None:
                 player_widget = PlayerWidget(
-                    f'{player.last_name} "{player.nickname}" {player.first_name}',
+                    self.split_first_last_name(player)[2],
                     player.country,
-                    player.profile_picture
+                    player.avatar
                 )
                 self.team_players_layout.addWidget(player_widget)
 

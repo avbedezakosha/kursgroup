@@ -3,12 +3,12 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-USE_MOCK_DATA = True
+USE_MOCK_DATA = False
 
 DB_CONFIG = {
-    'dbname': os.getenv('DB_NAME', 'postgres'),
-    'user': os.getenv('DB_USER', 'postgres'),
-    'password': os.getenv('DB_PASSWORD', 'root'),
-    'host': os.getenv('DB_HOST', 'localhost'),
-    'port': os.getenv('DB_PORT', '5432')
+    'dbname': "project25",
+    'user': "admin",
+    'password': "ee11cbb1",
+    'host': "10.22.31.252",
+    'port': '5432'
 }

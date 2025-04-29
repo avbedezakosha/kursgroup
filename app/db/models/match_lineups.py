@@ -12,7 +12,7 @@ class MatchLineups:
     def save(self) -> None:
         db: Database = Database()
         query: str = """
-            INSERT INTO match_lineups (match_id, player_id, team_id)
+            INSERT INTO project25.matchlineups (match_id, player_id, team_id)
             VALUES (%s, %s, %s)
         """
         db.execute_query(query, (
@@ -23,7 +23,7 @@ class MatchLineups:
     def all(cls) -> list:
         db: Database = Database()
         query: str = """
-            SELECT * FROM match_lineups
+            SELECT * FROM project25.matchlineups
         """
         return [cls(lineup_id=row[0], match_id=row[1], player_id=row[2], team_id=row[3]) for row in db.fetch_query(query)]
 

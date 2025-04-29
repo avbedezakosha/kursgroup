@@ -138,7 +138,9 @@ class Database:
                     item["team1_id"],
                     item["team2_id"],
                     item["match_date"],
-                    item["match_status"]
+                    item["match_status"],
+                    item["team1_score"],
+                    item["team2_score"]
                 ) for item in results
             ]
         elif table == "teams":
@@ -155,14 +157,13 @@ class Database:
                 (
                     item["player_id"],
                     item["nickname"],
-                    item.get("first_name", None),
-                    item.get("last_name", None),
+                    item.get("first_last_name", None),
                     item["email"],
                     item.get("phone", None),
                     item.get("country", None),
                     item.get("date_of_birth", None),
                     item["steam_id"],
-                    item.get("profile_picture", None)
+                    item.get("avatar", None)
                 ) for item in results
             ]
         elif table == "maps":

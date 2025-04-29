@@ -22,7 +22,7 @@ class Teams:
     def all(cls) -> list:
         db: Database = Database()
         query: str = """
-            SELECT * FROM teams
+            SELECT * FROM project25.teams
         """
         return [cls(team_id=row[0], team_name=row[1], logo=row[2], country=row[3]) for row in db.fetch_query(query)]
 
